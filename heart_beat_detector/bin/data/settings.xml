@@ -1,0 +1,9 @@
+<group>
+	<Fullscreen>0</Fullscreen>
+	<Show_cursor>1</Show_cursor>
+	<grid>0</grid>
+	<test>0</test>
+	<window_id>1</window_id>
+	<near>255</near>
+	<far>255</far>
+</group>
