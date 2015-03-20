@@ -10,9 +10,9 @@ class Fader{
 
   public:
     enum State{
+      STOP,
       LEFT,
-      RIGHT,
-      STOP
+      RIGHT
     };
 
   private:
@@ -72,7 +72,6 @@ class Fader{
    * ======================================== */
   void loop(){
 
-    _pos = analogRead(_statepin);
 
     if(_time.check() != 1) return;
 
@@ -88,35 +87,43 @@ class Fader{
    * ======================================== */
   void Left(){
     
-    if(_pos == MIN){
+    analogWrite(_out1, _power);
+    analogWrite(_out2, LOW);
+
+    delay(10);
+    Stop();
+
+    int pos = analogRead(_statepin);
+    if(_pos == pos){
       ChangeState(STOP);
       return;
     }
 
-    analogWrite(_out1, _power);
-    analogWrite(_out2, LOW);
+    _pos = pos;
 
-    delay(1);
 
-    Stop();
   };
 
   /* ======================================== *
    * void Right()                             *
    * ======================================== */
    void Right(){
-    
-    if(_pos == MAX){
-      ChangeState(STOP);
-      return;
-    }
 
     analogWrite(_out1, LOW);
     analogWrite(_out2, _power);
 
-    delay(1);
-
+    delay(10);
     Stop();
+
+    int pos = analogRead(_statepin);
+    if(_pos == pos){
+      ChangeState(STOP);
+      return;
+    }
+
+    _pos = pos;
+
+
   };
 
   /* ======================================== *

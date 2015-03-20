@@ -8,8 +8,8 @@ Servo center;
 Servo right;
 
 TurnTable L     (5, 6, 160, 200);
-TurnTable R     (7, 8, 180, 400);
-Fader     fader (9, 10, 0, 128, 100);
+TurnTable R     (7, 8, 255, 400);
+Fader     fader (9, 10, 0, 255, 100);
 
 void fader_control(int arg1, int arg2);
 void L_control    (int arg1, int arg2);
